@@ -5,7 +5,70 @@
     <title>Dataverse</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+  
   <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="data/img/logo.jpg" alt="Logo de la página">
+        </div>  
+        <h1>Personajes Del Señor de los Anillos</h1>  
+          <ul>
+              <li><a href="#">Películas</a></li>
+              <li><a href="#">Personajes</a></li>
+              <li><a href="#">Blog</a></li>
+          </ul>
+          <button id="suscribirse">Suscribirse</button>  
+      </nav>
+    </header>
+
+    <main>
+      <h2>¡Embárcate en la búsqueda del Anillo y descubre la Tierra Media!</h2>
+      <div class="texto-centrado">
+        <h1>¡Bienvenido a nuestro santuario virtual para los amantes de la trilogía de El Señor de los Anillos!
+        </h1>
+        <p>
+          Nuestra página es tu guía definitiva para explorar los personajes más icónicos de la saga, desde los valientes miembros de la Comunidad del Anillo hasta los temibles señores oscuros de Mordor. </p>
+      </div>
+      <section class="filtros">
+        <div class="filterRace">
+          <label for="filterRace">Raza</label>
+          <select name="filterRace" id="filterRace">
+            <option value="default">SELECCIONAR</option>
+            <option value="Hobbit">HOBBIT</option>
+            <option value="Maia">MAIA</option>
+            <option value="Elfo">ELFO</option>
+            <option value="Hombre">HOMBRE</option>
+            <option value="Enano">ENANO</option>
+            <option value="Ent">ENT</option>
+            <option value="Caballo">CABALLO</option>
+            <option value="Criatura">CRIATURA</option>
+            <option value="Medio Elfo">MEDIO ELFO</option>
+          </select>  
+        </div>
+        <div class="search">
+          <label for="inputText">Filtrar</label>
+          <span>
+            <input type="text" name="inputText" id="inputText" placeholder="Frodo ...">
+            <i>🔍</i>
+          </span>
+        </div>
+      </section>
+      <ul class="cards">
+        
+      </ul>
+      <button id="limpiar">Limpiar</button>
+
+        <ul id="root">
+            
+        </ul>
+    <button id="" class="boton-suscribirse">Suscribirse</button>
+    </main>
+
+    <footer>
+      <p>© 2024 - Todos los derechos reservados</p>
+    </footer>
+    <script src="data/dataset.js" type="module"></script>
     <script src="main.js" type="module"></script>
   </body>
 </html>

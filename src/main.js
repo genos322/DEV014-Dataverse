@@ -4,23 +4,24 @@ import { renderItems } from "./view.js";
 import data from "./data/dataset.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const characterContainer = document.querySelector(".cards");
-  data.map((item) => {
-    const card = document.createElement("li");
-    card.idNa;
-    card.className = "card";
-    card.setAttribute("id", item.id);
-    card.setAttribute("name", item.name);
-    card.setAttribute("itemtype","");
-    card.innerHTML = `
-            <img src="${item.imageUrl}" alt="${item.name}" />
-            <h2>${item.name}</h2>
-            <p>${item.shortDescription}</p>
-            <button class="showDescription">Ver más</button>
-            <p class="largeDescription">${item.description}</p>
-            <button class="unShowDescription">Volver</button>`;
-    characterContainer.appendChild(card);
-  });
+  const characterContainer = document.querySelector(".main");
+  characterContainer.appendChild(renderItems(data));
+  // data.map((item) => {
+  //   const card = document.createElement("li");
+  //   card.idNa;
+  //   card.className = "card";
+  //   card.setAttribute("id", item.id);
+  //   card.setAttribute("name", item.name);
+  //   card.setAttribute("itemtype","");
+  //   card.innerHTML = `
+  //           <img src="${item.imageUrl}" alt="${item.name}" />
+  //           <h2>${item.name}</h2>
+  //           <p>${item.shortDescription}</p>
+  //           <button class="showDescription">Ver más</button>
+  //           <p class="largeDescription">${item.description}</p>
+  //           <button class="unShowDescription">Volver</button>`;
+  //   characterContainer.appendChild(card);
+  // });
   document.querySelectorAll(".showDescription").forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.parentElement;

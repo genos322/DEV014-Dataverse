@@ -104,6 +104,7 @@ button {
     border-radius: 5px; 
     display: block;
     margin: 0 auto;
+    margin-top: 50px;
 }
 footer {
     background-color: #000000;
@@ -179,4 +180,30 @@ footer {
 }
 .card:hover{
     transform: scale(1.1);
+}
+
+#filterRace{
+    height: 30px;
+    border-radius: 5px;
+}
+#filterByAge {
+    height: 30px;
+    border-radius: 5px;
+}
+.limpiar span p{
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    width: 300px;
+    background-color: #000000;
+}
+.limpiar span{
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0;
+    background: #000000;
+}
+.limpiar span:hover{
+    cursor: pointer;
+    color: white;
 }

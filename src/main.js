@@ -1,27 +1,14 @@
-import { example } from "./dataFunctions.js";
 import { renderItems } from "./view.js";
+import { filterByRace } from './dataFunctions.js';
+import { filterByAge } from './dataFunctions.js';
 
 import data from "./data/dataset.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  let dataGlobal = data;
   const characterContainer = document.querySelector(".main");
-  characterContainer.appendChild(renderItems(data));
-  // data.map((item) => {
-  //   const card = document.createElement("li");
-  //   card.idNa;
-  //   card.className = "card";
-  //   card.setAttribute("id", item.id);
-  //   card.setAttribute("name", item.name);
-  //   card.setAttribute("itemtype","");
-  //   card.innerHTML = `
-  //           <img src="${item.imageUrl}" alt="${item.name}" />
-  //           <h2>${item.name}</h2>
-  //           <p>${item.shortDescription}</p>
-  //           <button class="showDescription">Ver más</button>
-  //           <p class="largeDescription">${item.description}</p>
-  //           <button class="unShowDescription">Volver</button>`;
-  //   characterContainer.appendChild(card);
-  // });
+  characterContainer.appendChild(renderItems(dataGlobal));
+
   document.querySelectorAll(".showDescription").forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.parentElement;
@@ -45,13 +32,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // document.querySelector(".showDescription").addEventListener("click",()=>{
-  //     document.querySelector(".card img").style.visibility = 'hidden';
-  //     document.querySelector(".card h2").style.visibility = 'hidden';
-  //     document.querySelector(".card p").style.visibility = 'hidden';
-  // })
+  document.querySelector('#filterRace').addEventListener('change', (event) => {
+    const selection = event.target.value;
+    const filteredData = filterByRace(selection, dataGlobal);
+    console.log(filteredData,selection);
+    characterContainer.innerHTML = '';
+    characterContainer.appendChild(renderItems(filteredData));
+    dataGlobal = filteredData;
+  });
+
+  document.querySelector('#filterByAge').addEventListener('change', (event) => {
+    const selection = event.target.value;
+    const filteredData = filterByAge(selection, dataGlobal);
+    console.log(filteredData,selection);
+    characterContainer.innerHTML = '';
+    characterContainer.appendChild(renderItems(filteredData));
+    dataGlobal = filteredData;
+  });
+
+  document.querySelector('#limpiar').addEventListener('click', () => {
+    document.querySelector('#filterRace').value = 'default';
+    document.querySelector('#filterRace').options.item(0).selected = true;
+    document.querySelector('#filterByAge').value = 'default';
+    document.querySelector('#filterByAge').options.item(0).selected = true;
+    characterContainer.innerHTML = '';
+    characterContainer.appendChild(renderItems(data));
+    dataGlobal = data;
+    console.log(data);
+  });
+
 });
 
-console.log(example, renderItems(data), data);
+console.log(filterByRace(document.querySelector('.filterRace').value,data), renderItems(data), data.facts);
 
 renderItems(data);

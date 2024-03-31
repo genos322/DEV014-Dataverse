@@ -6,7 +6,9 @@ import data from "./data/dataset.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   let dataGlobal = data;
+  let cont = 0;
   const characterContainer = document.querySelector(".main");
+
   characterContainer.appendChild(renderItems(dataGlobal));
 
   document.querySelectorAll(".showDescription").forEach((button) => {
@@ -33,21 +35,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelector('#filterRace').addEventListener('change', (event) => {
+    cont++;
     const selection = event.target.value;
-    const filteredData = filterByRace(selection, dataGlobal);
-    console.log(filteredData,selection);
+    const filteredData = filterByRace(selection, dataGlobal);//swtich dataGlobal
+    console.log(filteredData,dataGlobal.length);
     characterContainer.innerHTML = '';
-    characterContainer.appendChild(renderItems(filteredData));
-    dataGlobal = filteredData;
+    if(filteredData.length===0)
+    {
+      characterContainer.innerHTML = '<h2>No se encontraron personajes</h2>';
+    }
+    if(filteredData.length !== 0 || cont < 2){
+      cont += 0;
+      dataGlobal = filteredData;
+      characterContainer.appendChild(renderItems(filteredData));
+    }
   });
 
   document.querySelector('#filterByAge').addEventListener('change', (event) => {
+    cont++;
     const selection = event.target.value;
-    const filteredData = filterByAge(selection, dataGlobal);
-    console.log(filteredData,selection);
+    const filteredData = filterByAge(selection, dataGlobal);//switch dataGlobal
+    console.log(filteredData, dataGlobal.length);
     characterContainer.innerHTML = '';
-    characterContainer.appendChild(renderItems(filteredData));
-    dataGlobal = filteredData;
+    if(filteredData.length===0){
+      characterContainer.innerHTML = '<h2>No se encontraron personajes</h2>';
+    }
+    if(filteredData.length !== 0 || cont < 2){
+      dataGlobal = filteredData;
+      cont += 0;
+      characterContainer.appendChild(renderItems(filteredData));
+    }
   });
 
   document.querySelector('#limpiar').addEventListener('click', () => {
